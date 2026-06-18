@@ -1,0 +1,638 @@
+/* ============================================================
+   Leroux Lab — shared stylesheet
+   Background: #F7F1E3 → #F3DFC8 (scroll-shifted by JS)
+   Navy text:  #1E2A45
+   Accent:     #E8623D (coral primary) · #E8A23D (amber secondary)
+   Footer:     #FCE8D5
+   Headings:   Poppins (rounded geometric sans-serif)
+   Body:       Lora (classic serif)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* ── Custom properties ── */
+:root {
+  /* Base palette */
+  --bg:         #F7F1E3;   /* updated live by scroll-hue JS */
+  --navy:       #1E2A45;
+  --navy-light: #2e3f65;
+  --peach:      #FCE8D5;
+  --peach-dark: #f5d4b5;
+  --muted:      #6b7a99;
+
+  /* Accent colors — coral primary, amber secondary */
+  --accent-primary:   #E8623D;
+  --accent-secondary: #E8A23D;
+  --accent:           var(--accent-primary);   /* keeps all existing references working */
+  --accent-hover:     #d4532f;                 /* darkened coral for button hover */
+
+  --radius:     10px;
+  --max-w:      1100px;
+  --transition: 220ms ease;
+}
+
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background-color: var(--bg);
+  color: var(--navy);
+  line-height: 1.75;
+  font-size: 1rem;
+  opacity: 1;
+  animation: pageFadeIn 0.35s ease both;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+img { max-width: 100%; display: block; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.5rem; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Layout helpers ── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section { padding: 5rem 0; }
+
+/* ── Page header / nav ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(30, 42, 69, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Lab name wordmark */
+.site-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+/* Main nav links */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.site-nav a {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+  position: relative;
+  padding-bottom: 2px;
+  /* Smooth settle into active/hover color */
+  transition: color 320ms ease;
+}
+
+/* Animated underline: grows from center on hover */
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 1.5px;
+  background: var(--accent);
+  transition: left var(--transition), right var(--transition);
+}
+.site-nav a:hover::after,
+.site-nav a[aria-current="page"]::after {
+  left: 0;
+  right: 0;
+}
+.site-nav a[aria-current="page"] {
+  font-weight: 500;
+}
+
+/* Asterisk mark */
+.asterisk-mark {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  display: inline-block;
+  animation: asteriskSpin 10s linear infinite;
+  user-select: none;
+}
+
+@keyframes asteriskSpin {
+  0%   { transform: rotate(0deg);   color: var(--accent-primary); }
+  40%  { transform: rotate(144deg); color: var(--navy); }
+  60%  { transform: rotate(216deg); color: var(--navy); }
+  100% { transform: rotate(360deg); color: var(--accent-primary); }
+}
+
+/* Hamburger (mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: var(--navy);
+}
+.nav-toggle svg { display: block; }
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--peach);
+  border-top: 1px solid var(--peach-dark);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.site-footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-footer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: var(--navy);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  background: var(--accent-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  border: none;
+}
+
+.btn:hover {
+  transform: scale(1.04);
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px rgba(232, 98, 61, 0.28);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--bg);
+}
+
+/* ── Scroll fade-in ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Section heading accent ── */
+.section-label {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Divider — draws in left-to-right on scroll ── */
+.divider {
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  margin: 1.2rem 0 2rem;
+  transition: width 0.65s cubic-bezier(0.25, 0, 0.1, 1);
+}
+.divider.visible {
+  width: 3rem;
+}
+
+/* ══════════════════════════════
+   HOME — index.html
+   ══════════════════════════════ */
+
+/* Hero */
+.hero {
+  padding: 7rem 0 6rem;
+}
+
+.hero-inner {
+  max-width: 720px;
+}
+
+.hero-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 2.2rem;
+  max-width: 520px;
+}
+
+/* Research section — two columns */
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.research-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius);
+  border: 1px solid rgba(30, 42, 69, 0.08);
+}
+
+.research-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ══════════════════════════════
+   TEAM — team.html
+   ══════════════════════════════ */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  border: 1px solid rgba(30, 42, 69, 0.08);
+  overflow: hidden;
+  transition: transform 230ms ease, box-shadow 230ms ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30, 42, 69, 0.12);
+}
+
+/* Photo placeholder — swap <img> src when photos are ready */
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Start slightly scaled-up + invisible; settles in when card enters viewport */
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.6s ease 0.1s, transform 0.65s ease 0.1s;
+}
+.team-card.visible .team-photo img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Placeholder silhouette shown when no photo loaded */
+.team-photo-placeholder {
+  width: 60%;
+  opacity: 0.25;
+}
+
+.team-info {
+  padding: 1.2rem 1.4rem;
+}
+
+.team-info h3 {
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  transition: color 220ms ease;
+}
+
+.team-card:hover .team-info h3 {
+  color: var(--accent-primary);
+}
+
+.team-role {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ══════════════════════════════
+   PUBLICATIONS — publications.html
+   ══════════════════════════════ */
+
+.pub-section { margin-bottom: 4rem; }
+
+.pub-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(232, 98, 61, 0.22);
+}
+
+.pub-section-heading .icon {
+  font-size: 1.2rem;
+}
+
+.pub-year {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin: 1.8rem 0 0.8rem;
+}
+
+.pub-year:first-of-type { margin-top: 0; }
+
+.pub-entry {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(30, 42, 69, 0.07);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.pub-entry:last-child { border-bottom: none; }
+
+.pub-entry a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ══════════════════════════════
+   NEWS — news.html
+   ══════════════════════════════ */
+
+.news-list { max-width: 760px; }
+
+.news-entry {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(30, 42, 69, 0.07);
+}
+
+.news-entry:last-child { border-bottom: none; }
+
+.news-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding-top: 0.2rem;
+}
+
+.news-body { font-size: 0.98rem; }
+
+/* ══════════════════════════════
+   JOIN — join.html
+   ══════════════════════════════ */
+
+.join-section { max-width: 740px; margin-bottom: 4rem; }
+
+.join-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.join-section ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.join-section ul li { margin-bottom: 0.4rem; }
+
+.join-section ol {
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.join-section ol li { margin-bottom: 0.4rem; }
+
+.email-subject {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  background: var(--peach);
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+/* ══════════════════════════════
+   CONTACT — contact.html
+   ══════════════════════════════ */
+
+.contact-block {
+  max-width: 560px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(30, 42, 69, 0.07);
+}
+
+.contact-item:last-child { border-bottom: none; }
+
+.contact-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contact-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — Mobile
+   ══════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Nav collapses to hamburger */
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(30, 42, 69, 0.1);
+    z-index: 99;
+  }
+
+  .site-nav.open { display: flex; }
+
+  .nav-toggle { display: block; }
+
+  .site-header { position: relative; }
+
+  /* Two-column research → single */
+  .research-grid { grid-template-columns: 1fr; }
+
+  /* News date stacks above body */
+  .news-entry {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  section { padding: 3.5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 4rem 0 3.5rem; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ══════════════════════════════
+   Accessibility: reduced motion
+   ══════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .asterisk-mark {
+    animation: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .team-card:hover {
+    transform: none;
+  }
+
+  .site-nav a,
+  .site-nav a::after {
+    transition: none;
+  }
+
+  /* Divider: show immediately at full width */
+  .divider {
+    width: 3rem;
+    transition: none;
+  }
+
+  /* Team photos: show immediately */
+  .team-photo img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Footer: show immediately */
+  .site-footer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Team name color: no transition */
+  .team-info h3 { transition: none; }
+
+  /* Asterisk: static coral, no color cycling */
+  .asterisk-mark { color: var(--accent-primary); }
+}

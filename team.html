@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team — Leroux Lab</title>
+  <meta name="description" content="Meet the members of the Leroux Lab at Georgia Institute of Technology." />
+  <link rel="stylesheet" href="stylesheet.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+  <!-- ═══════════════════ HEADER / NAV ═══════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Leroux Lab</a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <span class="asterisk-mark" aria-hidden="true">✳</span>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <span class="section-label">People</span>
+        <h2>Our Team</h2>
+        <div class="divider"></div>
+
+        <div class="team-grid">
+
+          <!-- ── Principal Investigator ── -->
+          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/leroux.jpg" -->
+          <div class="team-card fade-up">
+            <div class="team-photo">
+              <img
+                src=""
+                alt="Headshot of Audrey Leroux"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <!-- SVG silhouette shown when photo is missing -->
+              <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
+                <circle cx="50" cy="35" r="22"/>
+                <ellipse cx="50" cy="85" rx="34" ry="26"/>
+              </svg>
+            </div>
+            <div class="team-info">
+              <h3>Audrey Leroux</h3>
+              <p class="team-role">Principal Investigator</p>
+            </div>
+          </div>
+
+          <!-- ── Postdoctoral Fellow ── -->
+          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/zhang.jpg" -->
+          <div class="team-card fade-up">
+            <div class="team-photo">
+              <img
+                src=""
+                alt="Headshot of Yichi Zhang"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
+                <circle cx="50" cy="35" r="22"/>
+                <ellipse cx="50" cy="85" rx="34" ry="26"/>
+              </svg>
+            </div>
+            <div class="team-info">
+              <h3>Yichi Zhang</h3>
+              <p class="team-role">Postdoctoral Fellow</p>
+            </div>
+          </div>
+
+          <!-- ── Graduate Student ── -->
+          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/lim.jpg" -->
+          <div class="team-card fade-up">
+            <div class="team-photo">
+              <img
+                src=""
+                alt="Headshot of Jie Yie Lim"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
+                <circle cx="50" cy="35" r="22"/>
+                <ellipse cx="50" cy="85" rx="34" ry="26"/>
+              </svg>
+            </div>
+            <div class="team-info">
+              <h3>Jie Yie Lim</h3>
+              <p class="team-role">Graduate Student</p>
+            </div>
+          </div>
+
+          <!-- ── Undergraduate Student ── -->
+          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/divekar.jpg" -->
+          <div class="team-card fade-up">
+            <div class="team-photo">
+              <img
+                src=""
+                alt="Headshot of Anvit Divekar"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
+                <circle cx="50" cy="35" r="22"/>
+                <ellipse cx="50" cy="85" rx="34" ry="26"/>
+              </svg>
+            </div>
+            <div class="team-info">
+              <h3>Anvit Divekar</h3>
+              <p class="team-role">Undergraduate Student</p>
+            </div>
+          </div>
+
+          <!-- ADD NEW TEAM MEMBERS HERE
+               Copy the block above and update:
+               - img src (e.g. src="images/name.jpg")
+               - img alt text
+               - h3 name
+               - p.team-role role title
+          -->
+
+        </div><!-- /.team-grid -->
+      </div><!-- /.container -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Leroux Lab &mdash; Georgia Institute of Technology</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News — Leroux Lab</title>
+  <meta name="description" content="News and updates from the Leroux Lab at Georgia Institute of Technology." />
+  <link rel="stylesheet" href="stylesheet.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+  <!-- ═══════════════════ HEADER / NAV ═══════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Leroux Lab</a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <span class="asterisk-mark" aria-hidden="true">✳</span>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <span class="section-label">Updates</span>
+        <h2>News</h2>
+        <div class="divider"></div>
+
+        <!-- ADD NEW ENTRIES at the top of this list (most recent first).
+             Copy a .news-entry block and update the date and body text. -->
+        <div class="news-list">
+
+          <!-- October 2025 -->
+          <div class="news-entry fade-up">
+            <p class="news-date">October 2025</p>
+            <p class="news-body">We welcomed our first undergraduate student, Anvit Divekar, to the lab.</p>
+          </div>
+
+          <!-- August 2025 — members -->
+          <div class="news-entry fade-up">
+            <p class="news-date">August 2025</p>
+            <p class="news-body">
+              We welcomed our first graduate student, Jieyee Lin, and our first postdoctoral fellow,
+              Yichi Zhang, to the lab.
+            </p>
+          </div>
+
+          <!-- August 2025 — founding -->
+          <div class="news-entry fade-up">
+            <p class="news-date">August 2025</p>
+            <p class="news-body">Leroux lab established.</p>
+          </div>
+
+        </div><!-- /.news-list -->
+      </div><!-- /.container -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Leroux Lab &mdash; Georgia Institute of Technology</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
