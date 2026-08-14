@@ -90,9 +90,17 @@
         p.vy += (dy / d) * push;
       }
 
-      /* dampen */
+      /* wander: small random nudge each frame keeps dots moving forever */
+      p.vx += (Math.random() - 0.5) * 0.06;
+      p.vy += (Math.random() - 0.5) * 0.06;
+
+      /* dampen — cap max speed */
       p.vx *= 0.97;
       p.vy *= 0.97;
+
+      /* clamp speed so nudges don't compound into a rocket */
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > 1.2) { p.vx = p.vx / speed * 1.2; p.vy = p.vy / speed * 1.2; }
 
       p.x += p.vx;
       p.y += p.vy;
