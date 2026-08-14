@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════ HEADER / NAV ═══════════════════ -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">Leroux Lab</a>
@@ -45,15 +44,13 @@
         <div class="team-grid">
 
           <!-- ── Principal Investigator ── -->
-          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/leroux.jpg" -->
           <div class="team-card fade-up">
             <div class="team-photo">
               <img
-                src=""
+                src="images/leroux.jpg"
                 alt="Headshot of Audrey Leroux"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               />
-              <!-- SVG silhouette shown when photo is missing -->
               <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
                 <circle cx="50" cy="35" r="22"/>
                 <ellipse cx="50" cy="85" rx="34" ry="26"/>
@@ -61,16 +58,23 @@
             </div>
             <div class="team-info">
               <h3>Audrey Leroux</h3>
-              <p class="team-role">Principal Investigator</p>
+              <p class="team-role">Associate Professor · Quantitative Psychology Area Director</p>
+              <span class="team-expand-hint">Click to read bio</span>
+              <div class="team-bio">
+                <p>Dr. Audrey Leroux is an Associate Professor in the School of Psychological and Brain Sciences at the Georgia Institute of Technology, where she also serves as the Quantitative Psychology area director. Previously, she was an Associate Professor of Research, Measurement, and Statistics in the Department of Educational Policy Studies at Georgia State University. She received her B.S. in Mathematics and Ph.D. in Quantitative Methods from The University of Texas at Austin.</p>
+                <p>Her research program focuses in two areas: multilevel modeling and computerized adaptive testing, both of which aim to solve methodological dilemmas encountered by applied researchers in the education field as well as more generally in the social and behavioral sciences. Her multilevel modeling research examines the impacts of different multilevel models for handling complex data structures such as individual mobility across clusters. Her computerized adaptive testing research concentrates on novel procedures within item exposure controls and stopping rules. Many of her research collaborations have been federally funded by the National Science Foundation, Institute of Education Sciences, and Department of Health and Human Services.</p>
+                <div class="team-bio-links">
+                  <a href="https://psychology.gatech.edu/people/audrey-leroux" target="_blank" rel="noopener">Faculty Page</a>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- ── Postdoctoral Fellow ── -->
-          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/zhang.jpg" -->
           <div class="team-card fade-up">
             <div class="team-photo">
               <img
-                src=""
+                src="images/zhang.jpg"
                 alt="Headshot of Yichi Zhang"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               />
@@ -86,12 +90,11 @@
           </div>
 
           <!-- ── Graduate Student ── -->
-          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/lim.jpg" -->
           <div class="team-card fade-up">
             <div class="team-photo">
               <img
-                src=""
-                alt="Headshot of Jie Yie Lim"
+                src="images/lim.jpg"
+                alt="Headshot of Jie Yee Lim"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               />
               <svg class="team-photo-placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:flex;" aria-hidden="true">
@@ -100,17 +103,23 @@
               </svg>
             </div>
             <div class="team-info">
-              <h3>Jie Yie Lim</h3>
-              <p class="team-role">Graduate Student</p>
+              <h3>Jie Yee Lim</h3>
+              <p class="team-role">Ph.D. Student</p>
+              <span class="team-expand-hint">Click to read bio</span>
+              <div class="team-bio">
+                <p>Jie Yee Lim is a Ph.D. student advised by Dr. Audrey Leroux. She received her B.S. in Psychology from Chung Yuan Christian University in Taiwan and her M.S.Ed. in Statistics, Measurement, Assessment and Research Technology from the University of Pennsylvania. Her research focuses on psychometrics and quantitative methods, including item response theory (IRT), multilevel modeling, and simulation studies. In her free time, she loves traveling and baking.</p>
+                <div class="team-bio-links">
+                  <a href="https://jieyee0204.github.io/" target="_blank" rel="noopener">Personal Website</a>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- ── Undergraduate Student ── -->
-          <!-- PLACEHOLDER: replace src with real headshot path, e.g. src="images/divekar.jpg" -->
           <div class="team-card fade-up">
             <div class="team-photo">
               <img
-                src=""
+                src="images/divekar.jpg"
                 alt="Headshot of Anvit Divekar"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               />
@@ -125,23 +134,21 @@
             </div>
           </div>
 
-          <!-- ADD NEW TEAM MEMBERS HERE
-               Copy the block above and update:
-               - img src (e.g. src="images/name.jpg")
-               - img alt text
-               - h3 name
-               - p.team-role role title
-          -->
-
         </div><!-- /.team-grid -->
       </div><!-- /.container -->
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Leroux Lab &mdash; Georgia Institute of Technology</p>
+    <div class="footer-left">
+      <p>Leroux Lab &mdash; Georgia Institute of Technology</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://psychology.gatech.edu/people/audrey-leroux" target="_blank" rel="noopener">Faculty Page</a>
+    </div>
   </footer>
 
+  <div class="nav-backdrop"></div>
   <script src="main.js"></script>
 </body>
 </html>
