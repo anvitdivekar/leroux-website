@@ -320,6 +320,28 @@ section { padding: 5rem 0; }
   pointer-events: none;
 }
 
+/* WebGL particle canvas — right half of hero */
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+  mask-image: linear-gradient(to right, transparent 0%, black 20%);
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  #hero-canvas { display: none; }
+}
+
 .hero-inner {
   max-width: 720px;
 }
