@@ -368,11 +368,11 @@ section { padding: 5rem 0; }
   max-width: 520px;
 }
 
-/* Research section — two columns */
+/* Research section — stacked full-width */
 .research-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .research-card {
@@ -719,9 +719,6 @@ section { padding: 5rem 0; }
   .nav-toggle { display: block; }
 
   .site-header { position: relative; }
-
-  /* Two-column research → single */
-  .research-grid { grid-template-columns: 1fr; }
 
   /* News date stacks above body */
   .news-entry {
