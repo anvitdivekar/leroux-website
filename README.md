@@ -178,7 +178,7 @@ All design tokens are CSS custom properties at the top of `stylesheet.css`.
 
 ## Deployment
 
-The site is hosted on [Vercel](https://vercel.com) as a static site, with no build command and no output directory. To deploy manually from a local checkout:
+The site is hosted on [Vercel](https://vercel.com) as a static site, with no build command and no output directory. **Every push to `main` deploys to production automatically**, usually within a minute. To deploy manually from a local checkout instead:
 
 ```bash
 npx vercel          # preview deployment
