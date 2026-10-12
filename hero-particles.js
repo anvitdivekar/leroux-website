@@ -29,8 +29,8 @@
     particles = [];
     for (var i = 0; i < COUNT; i++) {
       particles.push({
-        x:     rand(0, canvas.width),
-        y:     rand(0, canvas.height),
+        x:     rand(0, canvas.clientWidth),
+        y:     rand(0, canvas.clientHeight),
         r:     rand(2, 5.5),
         vx:    (Math.random() - 0.5) * 0.55,
         vy:    (Math.random() - 0.5) * 0.55,

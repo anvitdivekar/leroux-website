@@ -107,22 +107,53 @@
       var href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('http') || href.startsWith('//')) return;
       link.addEventListener('click', function (e) {
+        /* let cmd/ctrl/shift-click and middle-click open new tabs normally */
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 200ms ease';
         setTimeout(function () { window.location.href = href; }, 210);
       });
     });
+
+    /* Back/forward cache restores the faded-out page; make it visible again */
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) document.body.style.opacity = '';
+    });
   }
 
   /* ── Team card expand/collapse ── */
-  document.querySelectorAll('.team-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var wasExpanded = card.classList.contains('expanded');
-      document.querySelectorAll('.team-card').forEach(function (c) {
-        c.classList.remove('expanded');
-      });
-      if (!wasExpanded) card.classList.add('expanded');
+  var bioCards = document.querySelectorAll('.team-card');
+  bioCards = Array.prototype.filter.call(bioCards, function (c) { return c.querySelector('.team-bio'); });
+
+  function toggleCard(card) {
+    var wasExpanded = card.classList.contains('expanded');
+    bioCards.forEach(function (c) {
+      c.classList.remove('expanded');
+      c.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasExpanded) {
+      card.classList.add('expanded');
+      card.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  bioCards.forEach(function (card) {
+    /* make cards reachable and operable by keyboard */
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-expanded', 'false');
+
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return; /* bio links shouldn't collapse the card */
+      toggleCard(card);
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.target !== card) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleCard(card);
+      }
     });
   });
 
